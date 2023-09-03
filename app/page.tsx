@@ -1,14 +1,15 @@
-"use client";
-
 import BlogItem from "@/components/BlogItem";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import prisma from "@/lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const blogs = await prisma.blog.findMany();
+
   return (
     <div className="w-full flex gap-[20px]">
       <div className="w-3/4 flex flex-col gap-[20px]">
-        {[...Array(10)].map((x, i) => (
-          <BlogItem key={i} />
+        {blogs.map((blog, index) => (
+          <BlogItem key={index} blog={blog} />
         ))}
       </div>
 

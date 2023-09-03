@@ -8,15 +8,19 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
+import { blog } from "@prisma/client";
 
-function BlogItem() {
+interface Props {
+  blog: blog;
+}
+
+function BlogItem({ blog }: Props) {
   return (
     <Card>
       {/* Header */}
       <CardHeader>
         <CardTitle className="hover:underline cursor-pointer text-primary text-[20px]">
-          Excepteur incididunt ullamco consequat in laborum ipsum minim occaecat
-          in deserunt exercitation.
+          {blog.title}
         </CardTitle>
       </CardHeader>
 
@@ -36,21 +40,7 @@ function BlogItem() {
         </div>
 
         {/* Content */}
-        <div className="pt-[14px]">
-          Sit veniam ipsum ut est anim eu culpa. Eiusmod eiusmod do ad laborum
-          ad Lorem velit. Ex non magna ullamco labore aute esse do aliquip qui
-          veniam id cillum sint labore nulla. Do non qui qui sit aute do cillum
-          cillum. Velit sint enim culpa ex exercitation dolore ullamco magna
-          laborum ex cillum mollit. Exercitation veniam et mollit voluptate
-          fugiat occaecat ad non ad consectetur laborum cillum anim mollit. Ad
-          nisi ad minim veniam duis voluptate laboris Lorem. Do est non Lorem
-          nisi do duis cupidatat aliqua minim do. Proident duis culpa amet do
-          amet pariatur. Velit tempor non irure nostrud sunt occaecat voluptate
-          nulla exercitation consequat consequat ullamco magna nostrud. Culpa
-          deserunt elit est proident in voluptate aliquip adipisicing esse
-          irure. Enim non magna deserunt ad occaecat sunt ad nulla do nulla
-          nostrud amet.
-        </div>
+        <div className="pt-[14px]">{blog.content}</div>
       </CardContent>
 
       <CardFooter>
