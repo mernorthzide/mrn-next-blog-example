@@ -7,6 +7,7 @@ import { UserButton, useAuth, useUser } from "@clerk/nextjs";
 import UserIcon from "./icons/UserIcon";
 import Link from "next/link";
 import { Skeleton } from "./ui/skeleton";
+import PostIcon from "./icons/PostIcon";
 
 function Header() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -19,7 +20,7 @@ function Header() {
         <div className="flex gap-[20px] py-[10px]">
           <Link
             href="/"
-            className="flex justify-center items-center text-white hover:underline cursor-pointer"
+            className="h-[32px] flex justify-center items-center text-white hover:underline cursor-pointer"
           >
             <div className="mr-2 h-4 w-4">
               <HomeIcon />
@@ -27,24 +28,32 @@ function Header() {
             Home
           </Link>
 
-          <div className="flex justify-center items-center text-white hover:underline cursor-pointer">
+          <div className="h-[32px] flex justify-center items-center text-white hover:underline cursor-pointer">
             <div className="mr-2 h-4 w-4">
               <AboutIcon />
             </div>
             About
           </div>
 
-          <div className="flex justify-center items-center text-white hover:underline cursor-pointer">
+          <div className="h-[32px] flex justify-center items-center text-white hover:underline cursor-pointer">
             <div className="mr-2 h-4 w-4">
               <ContactIcon />
             </div>
             Contact
           </div>
 
-          <div className="flex-1"></div>
-
           {isLoaded ? (
-            <div>
+            <div className="flex-1 flex justify-between">
+              <Link
+                href="/post"
+                className="h-[32px] flex justify-center items-center text-white hover:underline cursor-pointer"
+              >
+                <div className="mr-2 h-4 w-4">
+                  <PostIcon />
+                </div>
+                Post
+              </Link>
+
               <div>
                 {isSignedIn ? (
                   <UserButton afterSignOutUrl="/" />

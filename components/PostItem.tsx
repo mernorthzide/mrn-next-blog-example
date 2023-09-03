@@ -8,19 +8,19 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
-import { blog } from "@prisma/client";
+import { Post } from "@prisma/client";
 
 interface Props {
-  blog: blog;
+  post: Post;
 }
 
-function BlogItem({ blog }: Props) {
+function PostItem({ post }: Props) {
   return (
     <Card>
       {/* Header */}
       <CardHeader>
         <CardTitle className="hover:underline cursor-pointer text-primary text-[20px]">
-          {blog.title}
+          {post.title}
         </CardTitle>
       </CardHeader>
 
@@ -40,7 +40,7 @@ function BlogItem({ blog }: Props) {
         </div>
 
         {/* Content */}
-        <div className="pt-[14px]">{blog.content}</div>
+        <div className="pt-[14px]">{post.content}</div>
       </CardContent>
 
       <CardFooter>
@@ -58,4 +58,4 @@ function BlogItem({ blog }: Props) {
   );
 }
 
-export default BlogItem;
+export default PostItem;
