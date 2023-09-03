@@ -1,12 +1,16 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import BlogItem from "@/components/BlogItem";
+import { Card } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Next.js</h1>
+    <div className="w-full flex gap-[20px]">
+      <div className="w-3/4 flex flex-col gap-[20px]">
+        {[...Array(10)].map((x, i) => (
+          <BlogItem key={i} />
+        ))}
+      </div>
 
-      <Button variant="default">Click me</Button>
+      <Card className="w-1/4">A</Card>
     </div>
   );
 }
